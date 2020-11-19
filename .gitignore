@@ -101,3 +101,5 @@ typings/
 
 # TypeScript cache
 *.tsbuildinfo
+
+env.js

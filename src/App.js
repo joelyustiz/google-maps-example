@@ -1,17 +1,26 @@
-import React, { useEffect } from 'react';
+import React, { Suspense } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import SvgSolutionMindSet from "./components/svgSolutionMindSet"
-import SvgJoelYustiz from "./components/svgJoelYustiz"
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import Context from "./context/context";
+import Home from "./view/Home/Home";
+import Navigation from "./view/navigation/Navigation"
+import NotFound from "./view/noFound/NoFound"
 
 function App(props) {
-  useEffect(() => {
-    console.log('antes');
-    return () => {
-      console.log('despues');
-    };
-  }, []);
-
-  return <div className="App"><SvgJoelYustiz /></div>;
+  return (
+    <Suspense fallback={<div />}>
+      <Context.Provider>
+        <BrowserRouter>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/navigation" component={Navigation} />                     
+            <Route component={NotFound} />
+          </Switch>        
+        </BrowserRouter>
+      </Context.Provider>    
+    </Suspense>
+);
 }
 
 export default App;
