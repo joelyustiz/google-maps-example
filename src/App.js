@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { GlobalStyle } from './css/GlobalStyles'
@@ -10,20 +10,20 @@ import NotFound from "./view/noFound/NoFound"
 
 function App(props) {
   return (
-    <Suspense fallback={<div />}>
+    <main>
       <GlobalStyle />
       <Context.Provider>
         <BrowserRouter>
           <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/navigation" component={Navigation} />                     
+            <Route  path="./" component={Home} />
+            <Route  path="./navigation" component={Navigation} />                     
             <Route component={NotFound} />
           </Switch> 
           <NavBar />       
         </BrowserRouter>
       </Context.Provider>
           
-    </Suspense>
+    </main>
 );
 }
 
