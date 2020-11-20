@@ -15,8 +15,8 @@ function App(props) {
       <Context.Provider>
         <BrowserRouter>
           <Switch>
-            <Route  path="./" component={Home} />
-            <Route  path="./navigation" component={Navigation} />                     
+            <Route exact path="/" component={Home} />
+            <Route exact path="/navigation" component={Navigation} />                     
             <Route component={NotFound} />
           </Switch> 
           <NavBar />       
