@@ -7,7 +7,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = env => ({
   mode: env.NODE_ENV === 'production' ? 'production' : 'none',
   entry: {
-    modules: ['react', 'react-dom'],
+    modules: ['react', 'react-dom', '@react-google-maps/api', 'react-router-dom'],
   },
   optimization: {
     minimizer: [new TersetJSPlugin(), new OptimizeCSSAssetsPlugin()],

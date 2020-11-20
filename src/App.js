@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { GlobalStyle } from './css/GlobalStyles'
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { GlobalStyle } from './css/GlobalStyles'
 import Context from "./context/context";
 import Home from "./view/Home/Home";
 import { NavBar } from './components/NavBar/NavBar'
@@ -11,7 +11,7 @@ import NotFound from "./view/noFound/NoFound"
 function App(props) {
   return (
     <Suspense fallback={<div />}>
-    <GlobalStyle />
+      <GlobalStyle />
       <Context.Provider>
         <BrowserRouter>
           <Switch>

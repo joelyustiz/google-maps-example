@@ -1,14 +1,14 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import { Image } from 'react-bootstrap';
+import { useHistory } from "react-router-dom";
 import banner from '../../assets/images/banner.png';
 import { Context } from "../../context/context"
-import { useHistory } from "react-router-dom";
 import {CustomButton} from '../../components/CustomButton/CustomButton';
 import {CustomLabel} from '../../components/CustomLabel/CustomLabel';
 import {CustomSection} from '../../components/CustomSection/CustomSection';
 
 function Home(props) {
-  let history = useHistory();
+  const history = useHistory();
   const [input, setInput] = useState("")
   const {
     user,
@@ -32,7 +32,7 @@ function Home(props) {
 
   return (
     <CustomSection>
-      <div >
+      <div>
         <div>
           <figure>
             <Image fluid src={banner} />
