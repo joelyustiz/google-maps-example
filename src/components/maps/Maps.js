@@ -15,8 +15,8 @@ const MapsPropTypes = {
 }
 
 const center = {
-  lat: 19,
-  lng: -99,
+  lat: 19.4326,
+  lng: -99.1332,
 }
 
 class Maps extends Component {
@@ -197,7 +197,7 @@ class Maps extends Component {
         <GoogleMap
           id='direction-example'
           mapContainerStyle={this.props.styles.container}
-          zoom={2}
+          zoom={11}
           center={center}
           onClick={this.onMapClick}
         >
