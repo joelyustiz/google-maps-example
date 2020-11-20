@@ -1,8 +1,11 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Image } from 'react-bootstrap';
-import banner from '../../assets/images/banner.jpg';
+import banner from '../../assets/images/banner.png';
 import { Context } from "../../context/context"
 import { useHistory } from "react-router-dom";
+import {CustomButton} from '../../components/CustomButton/CustomButton';
+import {CustomLabel} from '../../components/CustomLabel/CustomLabel';
+import {CustomSection} from '../../components/CustomSection/CustomSection';
 
 function Home(props) {
   let history = useHistory();
@@ -22,40 +25,33 @@ function Home(props) {
     history.push("/navigation");
   }
 
+  const getTitle = () => {
+    return  user === "" ?  "Bienvenido a tu ayudante de navegación" : ` Bienvenido nuevamente ${user}, a tu ayudante de navegación`
+  }
+
+
   return (
-    <section>
-      <div className="layout-content">
-        <div className="skewed">
+    <CustomSection>
+      <div >
+        <div>
           <figure>
             <Image fluid src={banner} />
           </figure>
-          {
-            user === "" ? (
-              <h1 className="title">
-                Bienvenido a tu ayudante de navegación
-              </h1>
-            ) 
-          : (
-            <h1 className="title">
-              Bienvenido nuevamente
-              {' '}
-              {user}
-              , a tu ayudante de navegación
-            </h1>
-            )}
-        
+          <h1 className="title">
+            {getTitle()}
+          </h1>
         </div>
       </div>
       <div>
         <form onSubmit={handleButton}>
-          <label>
-            Personalizalo con tu nombre 
-            <input type="text" value={input} onChange={handleInput} placeholder="Ejemplo: Joel :)" />
-          </label>
-          <input type="submit" value="Submit" />
+          <CustomLabel>
+            Personalizalo con tu nombre             
+            <input className="form-control" type="text" value={input} onChange={handleInput} placeholder="Ejemplo: Joel :)" />
+          </CustomLabel>
+          <CustomButton disabled={input.trim() === ""} type="submit" value="ingresar" />
         </form>
       </div>
-    </section>
+    </CustomSection>
   );
 }
 

@@ -6,6 +6,8 @@ import {
   DirectionsRenderer,
 } from '@react-google-maps/api'
 
+import { MapContainer, Button, MapSettings } from './styles'
+
 const MapsPropTypes = {
   styles: PropTypes.shape({
     container: PropTypes.object.isRequired,
@@ -13,8 +15,8 @@ const MapsPropTypes = {
 }
 
 const center = {
-  lat: 0,
-  lng: -180,
+  lat: 19,
+  lng: -99,
 }
 
 class Maps extends Component {
@@ -28,7 +30,7 @@ class Maps extends Component {
   }
 
   directionsCallback = (response) => {
-    console.log(response)
+    console.log("directionsCallback ",response)
 
     if (response !== null) {
       if (response.status === 'OK') {
@@ -91,14 +93,15 @@ class Maps extends Component {
   }
 
   render = () => (
+    <MapContainer>
     <div className='map'>
-      <div className='map-settings'>
+      <MapSettings className='map-settings'>
         <hr className='mt-0 mb-3' />
 
         <div className='row'>
           <div className='col-md-6 col-lg-4'>
             <div className='form-group'>
-              <label htmlFor='ORIGIN'>Origin</label>
+              <label htmlFor='ORIGIN'>Origen</label>
               <br />
               <input
                 id='ORIGIN'
@@ -111,7 +114,7 @@ class Maps extends Component {
 
           <div className='col-md-6 col-lg-4'>
             <div className='form-group'>
-              <label htmlFor='DESTINATION'>Destination</label>
+              <label htmlFor='DESTINATION'>Destino</label>
               <br />
               <input
                 id='DESTINATION'
@@ -134,7 +137,7 @@ class Maps extends Component {
               onChange={this.checkDriving}
             />
             <label className='custom-control-label' htmlFor='DRIVING'>
-              Driving
+              Conducir
             </label>
           </div>
 
@@ -148,7 +151,7 @@ class Maps extends Component {
               onChange={this.checkBicycling}
             />
             <label className='custom-control-label' htmlFor='BICYCLING'>
-              Bicycling
+              	Ir en bicicleta
             </label>
           </div>
 
@@ -162,7 +165,7 @@ class Maps extends Component {
               onChange={this.checkTransit}
             />
             <label className='custom-control-label' htmlFor='TRANSIT'>
-              Transit
+              Transporte
             </label>
           </div>
 
@@ -176,21 +179,21 @@ class Maps extends Component {
               onChange={this.checkWalking}
             />
             <label className='custom-control-label' htmlFor='WALKING'>
-              Walking
+              Caminando
             </label>
           </div>
         </div>
 
-        <button
+        <Button
           className='btn btn-primary'
           type='button'
           onClick={this.onClick}
         >
           Buscar ruta
-        </button>
-      </div>
+        </Button>
+      </MapSettings>
 
-      <div className='map-container'>
+      <div className='map-container '>
         <GoogleMap
           id='direction-example'
           mapContainerStyle={this.props.styles.container}
@@ -221,6 +224,7 @@ class Maps extends Component {
         </GoogleMap>
       </div>
     </div>
+    </MapContainer>
   )
 }
 

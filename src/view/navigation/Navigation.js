@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 import Maps from "../../components/maps/Maps"
 import {key} from "../../../env"
 import { Context } from "../../context/context"
+import {CustomSection} from '../../components/CustomSection/CustomSection';
 
 function Navigation(props) {
     const history = useHistory();
@@ -13,34 +14,23 @@ function Navigation(props) {
     } = useContext(Context);
     const containerStyle = {
         container: {
-            width: '400px',
-            height: '400px'
+            width: '100%',
+            height: '400px',
+            padding: "30px 10px"            
         }
     };
     return (
-      <div>
+      <CustomSection>
         <h1>
-          Hola!
-          {' '}
-          {user}
-          {' '}
-          bienvenido al panel de Navegación
+          Hola! {user} Te damos la bienvenida al panel de Navegación
         </h1> 
-        <Button
-          onClick={()=>{
-                history.push("/");
-        }}
-          variant="success"
-        >
-          Regresar
-        </Button>
         <br />
         <LoadScript
           googleMapsApiKey={key.mapsKey}
         >
           <Maps styles={containerStyle} />
         </LoadScript>
-      </div>
+      </CustomSection>
     )
 }
 
